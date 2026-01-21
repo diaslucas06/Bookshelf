@@ -1,3 +1,5 @@
+/* CORES TEMA CLARO: */
+
 :root{
 
     /* COR DE FUNDO */
@@ -6,13 +8,83 @@
     /* CORES DE TEXTO */
     --text: #000000;
     
-    /* IMAGENS */
-    --profile-pic: url('../../assets/imgs/profile-pic-claro.png');
-    --profile-pic-perfil: url('../../assets/imgs/profile-pic-perfil-claro.png');
-    --dark-mode: url('../../assets/imgs/dark-mode-claro.png');
-    --control: url('assets/imgs/control-desativado.png');
-    --logo-escura: url('../../assets/imgs/logo-escura.png');
-    --logo-clara: url("../../assets/imgs/logo-clara.png");
-    --busca: #F5F5DC;
+    /* CORES BASE */
+    --base: #91a5ff;
+    --base-escura: #2644c9;
+    
+}
 
+/* CORES TEMA ESCURO: */
+
+[theme="dark"] {
+
+    /* COR DE FUNDO */
+    --background-color: #000000;
+
+    /* CORES DE TEXTO */
+    --text: #FFFFFF;
+    
+    /* CORES BASE */
+    --base: #2644c9;
+    --base-escura: #91a5ff;
+
+}
+
+/* CSS: */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 2%;
+    background-color: var(--base);
+}
+
+#title {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+h2 {
+    font-size: 36px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+    padding: 2%;
+}
+
+#form-cadastro {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 2%;
+    width: 40%;
+    border: 1px solid black;
+    border-radius: 25px;
+}
+
+#form-preencher {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input, button {
+    padding: 10px;
+    border-radius: 15px;
 }
