@@ -1,0 +1,18 @@
+:root{
+
+    /* COR DE FUNDO */
+    --background-color: #FFFFFF;
+
+    /* CORES DE TEXTO */
+    --text: #000000;
+    
+    /* IMAGENS */
+    --profile-pic: url('../../assets/imgs/profile-pic-claro.png');
+    --profile-pic-perfil: url('../../assets/imgs/profile-pic-perfil-claro.png');
+    --dark-mode: url('../../assets/imgs/dark-mode-claro.png');
+    --control: url('assets/imgs/control-desativado.png');
+    --logo-escura: url('../../assets/imgs/logo-escura.png');
+    --logo-clara: url("../../assets/imgs/logo-clara.png");
+    --busca: #F5F5DC;
+
+}
