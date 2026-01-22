@@ -1,6 +1,14 @@
 let FormPreencher = document.getElementById('#form-preencher');
 let FormCadastro = document.getElementById('#form-cadastro');
 
+function Number(valor){
+    if (valor == "string") {
+        valor = Number(valor);
+        valor.replace(",",".");
+    }
+    return valor.toFixed(2);
+}
+
 let Botao = document.getElementById('btn');
 let Lista = []
 
@@ -12,6 +20,9 @@ Botao.addEventListener('click', function(event) {
     let Categoria = document.getElementsByName('categoria')[0].value;
     let Quantidade = document.getElementsByName('quantidade')[0].value;
     let ValorUnitario = document.getElementsByName('valorUnitario')[0].value;
+
+    Quantidade = Number(Quantidade);
+    ValorUnitario = Number(ValorUnitario);
 
     livro = {}
     livro.titulo = titulo;
