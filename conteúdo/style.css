@@ -234,3 +234,36 @@ button {
     font-size: 36px;
     border-radius: 50px;
 }
+
+#mensagem {
+    color: var(--texto-claro);
+}
+
+/* LISTA DE LIVROS CADASTRADOS */
+
+#secao4 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: var(--texto-escuro);
+}
+
+#livrosCadastrados {
+    width: 90%;
+}
+
+#livrosCadastrados h3 {
+    color: var(--texto-claro);
+}
+
+#lista {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    list-style-type: none;
+}
+
+#lista li {
+    width: 100%;
+    background-color: #D9D9D9;
+}
