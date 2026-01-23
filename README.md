@@ -12,6 +12,18 @@ Bookshelf é uma aplicação web simples que possibilita ao usuário cadastrar l
 A aplicação calcula automaticamente métricas como total de livros cadastrados, média do valor unitário e quantidade de livros por gênero, além de permitir a filtragem por gênero.  
 
 
+##3. Funcionalidades
+
+- Aba para filtrar livros por categoria/gênero;
+- Alternância entre modo escuro/claro;
+- Descrição do objetivo do app e como usá-lo;
+- Sugestões literárias para o usuário;
+- Formulário para cadastro de livros no BookShelf (com Título, Gênero, Descrição, Quantidade e Valor Unitário);
+- Botão para validar formulário, com armazenamento de informações no localStorage;
+- Informações de livros já cadastrados, com o total de livros, média de valor unitário e total de livros por gênero;
+- Opção de remover item.
+
+
 ##4. Requisitos Técnicos
 
 - Manipulação de arrays e objetos
