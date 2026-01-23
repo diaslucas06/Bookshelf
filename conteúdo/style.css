@@ -267,3 +267,118 @@ button {
     width: 100%;
     background-color: #D9D9D9;
 }
+
+#livrosCadastrados h3 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 36px;
+    color: var(--texto-claro);
+    margin: 30px 0;
+    font-family: 'Mystery Quest', system-ui, sans-serif;
+}
+
+/* Para cada lista adicionada via JavaScript */
+#lista {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+}
+
+#lista li {
+    background-color: #EDEDED; 
+    border-radius: 12px;
+    padding: 24px 28px;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.03);
+    position: relative;
+    overflow: hidden;
+    color: #222;
+    white-space: pre-line; /* preserva as quebras inseridas pelo JS */
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Estiliza só a primeira linha do li (que no JS é o título) */
+#lista li::first-line {
+    font-family: 'Mystery Quest', system-ui, sans-serif;
+    font-size: 30px;
+    color: var(--button-background); /* roxo coerente com o site */
+    font-weight: 300;
+    display: block;
+    margin-bottom: 6px;
+}
+
+/* Pequeno texto do corpo (descrição..) com cor mais suave */
+#lista li {
+    color: #202020;
+}
+
+/* Espaçamentos responsivos */
+@media (max-width: 800px) {
+    #form-cadastro, #lista li {
+        width: 100%;
+        padding: 18px;
+    }
+    #livrosCadastrados h3 { font-size: 28px; }
+    #lista li::first-line { font-size: 24px; }
+}
+
+/*Caixas de estatísticas (baixo da lista de livros) */
+
+#livrosCadastrados .stats {
+    display: flex;
+    gap: 18px;
+    margin-top: 26px;
+    flex-wrap: wrap;
+    justify-content: center; /* centraliza as caixas na linha */
+    align-items: center;
+}
+
+/* estilo base das caixas pequenas */
+.stat-box {
+    background-color: var(--secao-background-color); /* tom claro já definido */
+    color: var(--base-escura);
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 0 rgba(0,0,0,0.04);
+    font-family: 'Mystery Quest', system-ui, sans-serif;
+    font-size: 16px;
+    min-width: 220px; /* largura mínima para ficar parecidas com a imagem */
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* caixa central com destaque (cor roxa e texto claro) */
+.stat-box.center {
+    background-color: var(--background-color-form); /* usa cor do formulário roxa */
+    color: var(--texto-claro);
+}
+
+/* adaptações responsivas */
+@media (max-width: 900px) {
+    #livrosCadastrados .stats {
+        gap: 14px;
+    }
+    .stat-box {
+        min-width: 180px;
+        padding: 8px 14px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 520px) {
+    /* empilha verticalmente em telas pequenas */
+    #livrosCadastrados .stats {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+    }
+    .stat-box {
+        width: 100%;
+        min-width: 0;
+    }
+}
