@@ -3,7 +3,6 @@
 const FormPreencher = document.getElementById('form-preencher');
 const FormCadastro = document.getElementById('form-cadastro');
 const BotaoAdicionar = document.getElementById('btn');
-const BotaoExcluir = document.getElementById('btn-excluir');
 const Listaul = document.getElementById('lista');
 const mensagem = document.getElementById('mensagem');
 const quantidadeLivros = document.getElementById('qtd');
@@ -33,8 +32,27 @@ function atualizar_lista() {
         let li = document.createElement('li');
         let livro = LivrosCadastrados[i];
 
-        li.innerHTML = `<div><h2>${livro.titulo}</h2><h2>R$${livro.valorUnitario}</h2></div>\n<p>${livro.descricao}</p>\n<div><div id="carac"><h4>Gênero: ${livro.genero}</h4><h4>Quantidade: ${livro.quantidade}</div></h4><div id="excluir"></div></div>`;
+        li.innerHTML = `<div><h2>${livro.titulo}</h2><h2>R$${livro.valorUnitario}</h2></div>\n<p>${livro.descricao}</p>\n<div><div id="carac"><h4>Gênero: ${livro.genero}</h4><h4>Quantidade: ${livro.quantidade}</div></h4><div class="excluir" id="excluir${i}"></div></div>`;
         Listaul.appendChild(li);
+        const excluir = document.getElementById(`excluir${i}`);
+        excluir.addEventListener('click', (event) => {
+            event.preventDefault();
+
+            LivrosCadastrados.splice(i, 1);
+            TotalGeral -= livro.quantidade * livro.valorUnitario;
+            QuantidadeTotal -= livro.quantidade;
+            let MediaTotal = TotalGeral / QuantidadeTotal;
+            if (QuantidadeTotal === 0) {
+                MediaTotal = 0;
+            }
+
+            quantidadeLivros.innerText = `Total de livros cadastrados: ${QuantidadeTotal}`
+            mediaLivros.innerHTML = `Média do valor unitário: R$${MediaTotal.toFixed(2)}`
+            totalLivros.innerText = `Valor total dos livros: R$${TotalGeral.toFixed(2)}`
+
+            atualizar_lista();
+
+        });
     }
 
     /*JSON stringtify, converte o array para texto e exibe*/

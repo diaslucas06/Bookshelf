@@ -422,7 +422,7 @@ button {
     color: #22003C;
 }
 
-#excluir {
+.excluir {
     width: 40px;
     height: 40px;
     background-image: url(data/lixeira.png);
