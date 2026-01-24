@@ -58,7 +58,10 @@ A aplicação calcula automaticamente métricas como total de livros cadastrados
 
 ## 8. Divisão do Grupo
 
-- Brenda Walsh de Medeiros Pereira: Figma; Readme, JavaScript.
-- Emilly Mirely Mariz de Andrade: Figma; Readme, CSS, JavaScript.
-- Lucas Gabriel de Araújo Dias: Figma;  HTML, CSS, JavaScript.
-- Raíssa dos Santos Medeiros: Figma, HTML, Readme, JavaScript.
+As funções não foram divididas de forma rígida, cada integrante do grupo contribuiu de alguma maneira com as diferentes partes do App. Houveram contribuições de todos os integrantes no Figma e JavaScript.
+
+- Brenda Walsh de Medeiros Pereira: Figma, Readme, JavaScript.
+- Emilly Mirely Mariz de Andrade: Figma, Readme, CSS, JavaScript.
+- Lucas Gabriel de Araújo Dias: Figma,  HTML, CSS, JavaScript.
+- Raíssa dos Santos Medeiros: Figma, HTML, JavaScript.
+
