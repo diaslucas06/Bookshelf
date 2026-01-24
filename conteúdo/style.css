@@ -122,8 +122,8 @@ header {
 
 /* Ajuste para a imagem dos livros não voar */
 #img-decoracao {
-    width: 80%;               
-    margin-bottom: -5px;      
+    width: 70%;               
+    margin-bottom: -10px;      
 }
 
 /* Garante que a madeira da estante respeite o limite */
@@ -424,9 +424,10 @@ button {
     align-items: center;
 }
 
-#carac {
+li #carac {
     justify-content: left;
-    gap: 40px;
+    column-gap: 40px;
+    row-gap: 5px;
 }
 
 #lista li h3 {
@@ -454,24 +455,13 @@ button {
     background-size: contain;
 }
 
-#excluir:hover {
+.excluir:hover {
     cursor: pointer;
 }
-
 
 /* Pequeno texto do corpo (descrição..) com cor mais suave */
 #lista li {
     color: #202020;
-}
-
-/* Espaçamentos responsivos */
-@media (max-width: 800px) {
-    #form-cadastro, #lista li {
-        width: 100%;
-        padding: 18px;
-    }
-    #livrosCadastrados h3 { font-size: 28px; }
-    #lista li::first-line { font-size: 24px; }
 }
 
 /*Caixas de estatísticas (baixo da lista de livros) */
@@ -480,6 +470,7 @@ button {
     display: flex;
     gap: 18px;
     margin-top: 26px;
+    padding-bottom: 50px;
     flex-wrap: wrap;
     justify-content: center; /* centraliza as caixas na linha */
     align-items: center;
@@ -505,31 +496,6 @@ button {
     color: var(--texto-claro);
 }
 
-/* adaptações responsivas */
-@media (max-width: 900px) {
-    #livrosCadastrados .stats {
-        gap: 14px;
-    }
-    .stat-box {
-        min-width: 180px;
-        padding: 8px 14px;
-        font-size: 15px;
-    }
-}
-
-@media (max-width: 520px) {
-    /* empilha verticalmente em telas pequenas */
-    #livrosCadastrados .stats {
-        flex-direction: column;
-        gap: 12px;
-        align-items: stretch;
-    }
-    .stat-box {
-        width: 100%;
-        min-width: 0;
-    }
-}
-
 /* Coloca o título na esquerda e o botão na direita */
 #cabecalho-lista {
     display: flex;
@@ -537,6 +503,10 @@ button {
     align-items: center;
     width: 100%;
     margin-bottom: 30px; 
+}
+
+li #titulo #titulo-livro {
+    max-width: 1400px;
 }
 
 #filtro-genero {
@@ -552,13 +522,6 @@ button {
     text-align: center;
 }
 
-@media (max-width: 800px) {
-    #cabecalho-lista {
-        flex-direction: column;
-        gap: 15px;
-    }
-}
-
 .livros-decoracao {
     width: 60%;   
     height: auto; 
@@ -572,9 +535,352 @@ button {
     display: block;
 }
 
-@media (max-width: 800px) {
-    .livros-decoracao {
-        width: 50%; 
+/*FOOTER*/
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+    background-color: var(--header-background);
+    border-top: 10px solid var(--header-border);
+}
+
+#title-footer {
+    display: flex;
+    gap: 30px;
+}
+
+#title-footer h1 {
+    font-family: 'Mystery Quest';
+    font-weight: 300;
+    font-size: 64px;
+    color: white;
+}
+
+#title-footer img {
+    width: 100px;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 2560px) {
+    .livro {
+        height: 550px;
     }
 }
+
+@media (max-width: 1920px) {
+    .livro {
+        height: 400px;
+    }
+}
+
+@media (max-width: 1440px) {
+    #texto-secao1 {
+        gap: 20px;
+    }
+    .livro {
+        height: 300px;
+    }
+    #form-cadastro, #btn {
+        width: 55%;
+    }
+    li #titulo #titulo-livro {
+        max-width: 1050px;
+    }
+}
+
+@media (max-width: 1024px) {
+    #title {
+        gap: 20px;
+    }
+    #title h1 {
+        font-size: 70px;
+    }
+    #logo {
+        width: 110px;
+    }
+    .option {
+        width: 45%;
+    }
+    main h2, #cabecalho-lista h2 {
+        font-size: 36px;
+    }
+    main h3, footer h3 {
+        font-size: 32px;
+    }
+    main p {
+        font-size: 24px;
+    }
+    .livro {
+        height: 220px;
+    }
+    #form-cadastro, #btn {
+        width: 65%;
+    }
+    label {
+        font-size: 24px;
+    }
+    #lista li p {
+        font-size: 24px;
+    }
+    li #carac h4 {
+        font-size: 28px;
+    }
+    li #titulo #titulo-livro {
+        max-width: 700px;
+    }
+
+}
+
+@media (max-width: 900px) {
+    #livrosCadastrados .stats {
+        gap: 14px;
+    }
+    .stat-box {
+        min-width: 180px;
+        padding: 8px 14px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 858px) {
+    #decoracao {
+        display: none;
+    }
+    #opcao-darkmode {
+        width: 70%;
+    }
+    #secao1 p {
+        font-size: 22px;
+    }
+    .livro {
+        height: 180px;
+    }
+}
+
+@media (max-width: 768px) {
+    #darkmodeicon {
+        width: 40px;
+        height: 40px;
+    }
+    .option h2 {
+        font-size: 28px;
+    }
+    main h2 {
+        font-size: 32px;
+    }
+    main h3 {
+        font-size: 28px;
+    }
+    #texto-secao1 p {
+        font-size: 18px;
+    }
+    #secao1 img {
+        width: 200px;
+    }
+    .livro {
+        height: 170px;
+    }
+    #form-cadastro, #btn {
+        width: 80%;
+    }
+    #btn {
+        font-size: 28px;
+    }
+    #lista li p {
+        font-size: 18px;
+    }
+    li #carac {
+        flex-wrap: wrap;
+    }
+    li #carac h4 {
+        font-size: 24px;
+    }
+    footer h3 {
+        font-size: 28px;
+    }
+    li #titulo #titulo-livro {
+        max-width: 470px;
+    }
+}
+
+@media (max-width: 425px) {
+    #cabecalho{
+        flex-direction: column;
+        gap: 15px;
+    }
+    #title img {
+        width: 100px;
+    }
+    #title h1 {
+        font-size: 60px;
+    }
+    #opcao-darkmode {
+        width: 100%;
+    }
+    #darkmodeicon {
+        width: 30px;
+        height: 30px;
+    }
+    main {
+        padding-top: 40px;
+    }
+    #secao1 {
+        flex-direction: column;
+        gap: 30px;
+    }
+    #secao1 img {
+        width: 120px;
+    }
+    #secao1 p {
+        text-align: justify;
+    }
+    #texto-secao1 h2, h3 {
+        text-align: center;
+    }
+    #texto-secao1 div {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .livro {
+        min-width: 180px;
+        min-height: 260px;
+    }
+    #livros-sugeridos {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    #livro5 {
+        display: none;
+    }
+    #secao3 {
+        width: 100%;
+        padding: 30px;
+    }
+    #form-cadastro, #btn {
+        width: 100%;
+    }
+    #form-cadastro {
+        padding: 30px;
+        gap: 20px;
+    }
+    #form-preencher {
+        gap: 10px;
+    }
+    #cabecalho-lista {
+        flex-direction: column;
+    }
+    #filtro-genero {
+        font-size: 16px;
+    }
+    li #titulo h2 {
+        font-size: 28px;
+    }
+    #carac {
+        gap: 15px;
+    }
+    li #carac h4 {
+        font-size: 18px;
+    }
+    #lista li p {
+        font-size: 16px;
+    }
+    #cabecalho-lista h2 {
+        font-size: 32px;
+    }
+    .excluir {
+        width: 20px;
+        min-width: 20px;
+    }
+    .stats p {
+        width: 100%;
+    }
+    #title-footer h1 {
+        font-size: 50px;
+    }
+    #title-footer img {
+        width: 70px;
+    }
+    footer h3 {
+        font-size: 24px;
+        text-align: center;
+    }
+    footer h4 {
+        text-align: center;
+    }
+    #mensagem {
+        text-align: center;
+        font-size: 20px;
+    }
+    li #titulo #titulo-livro {
+        max-width: 205px;
+    }
+}
+
+@media (max-width: 375px) {
+    #title img {
+        min-width: 60px;
+        width: 70px;
+    }
+    #title h1 {
+        font-size: 40px;
+    }
+    .texto-option h2 {
+        font-size: 20px;
+    }
+    main h2 {
+        font-size: 28px;
+    }
+    #cabecalho-lista h2 {
+        font-size: 28px;
+    }
+    #cabecalho-lista img {
+        width: 40px;
+    }
+    #secao1 img {
+        display: none;
+    }
+    .livro {
+        min-width: 155px;
+        width: 155px;
+        min-height: 230px;
+        height: 230px;
+    }
+    label {
+        font-size: 18px;
+    }
+    #form-cadastro {
+        width: 100%;
+    }
+    #btn {
+        font-size: 20px;
+    }
+    li #titulo #titulo-livro {
+        max-width: 160px;
+    }
+}
+
+@media (max-width: 320px) {
+    .livro {
+        min-width: 130px;
+        width: 130px;
+        min-height: 200px;
+        height: 200px;
+    }
+    #cabecalho-lista h2 {
+        gap: 5px;
+    }
+    li #titulo h2 {
+        font-size: 20px;
+    }
+    li #titulo #titulo-livro {
+        max-width: 140px;
+    }
+}
+
 

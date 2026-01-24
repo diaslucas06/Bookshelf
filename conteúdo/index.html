@@ -19,14 +19,14 @@
             </div>
 
         <div id="opcoes">
-            <div class="option">
+            <div class="option" id="decoracao">
                 
                 <img src="data/Livros.png" alt="" id="img-decoracao">
                 
                 <img src="data/estante.png" alt="" id="prateleira">
             </div>
 
-            <div class="option">
+            <div class="option" id="opcao-darkmode">
                 <div class="texto-option" id="texto-darkmode">
                     <div id="darkmodeicon"></div>
                     <h2>Modo Escuro</h2>
@@ -40,6 +40,8 @@
 
         <!--Seções-->
 
+        <!--Informações sobre o app-->
+
         <section id="secao1">
             <div id="texto-secao1">
                 <h2>Adicione todos os livros que pretende ler, criando seu próprio carrinho de compras literário!</h2>
@@ -50,6 +52,8 @@
             </div>
             <img src="data/bookshelf.png" alt="">
         </section>
+
+        <!--Livros sugeridos para leitura-->
 
         <section id="secao2">
             <div id="texto-secao2">
@@ -86,31 +90,42 @@
             <p id="mensagem"></p>
         </section>
 
-    <section id="secao4">
-       <div id="livrosCadastrados">
-    <div id="cabecalho-lista">
-        <h2><img src="data/book-icon.png" alt="" id="bookicon">Livros Cadastrados</h2>
-        
-        <select id="filtro-genero">
-            <option value="todos">Filtrar por Gênero</option>
-        </select>
-    </div>
+        <!--Seção em que os livros cadastrados aparecem-->
 
-    <ul id="lista">
-        </ul>
-    
-    <div class="stats">
-        <p id="qtd" class="stat-box">Total de livros cadastrados: 0</p>
-        <p id="media" class="stat-box center">Média de valor unitário: 0</p>
-        <p id="total" class="stat-box">Valor total dos livros: 0</p>
-    </div>
-</div>
-    </section>
+        <section id="secao4">
+            <div id="livrosCadastrados">
+                <div id="cabecalho-lista">
+                    <h2><img src="data/book-icon.png" alt="" id="bookicon">Livros Cadastrados</h2>
+                    
+                    <select id="filtro-genero">
+                        <option value="todos">Filtrar por Gênero</option>
+                    </select>
+                </div>
+
+                <!--Lista dos livros cadastrados-->
+                <ul id="lista">
+                    <!--Livros-->
+                </ul>
+                
+                <!--Métricas-->
+                <div class="stats">
+                    <p id="qtd" class="stat-box">Total de livros cadastrados: 0</p>
+                    <p id="media" class="stat-box center">Média de valor unitário: 0</p>
+                    <p id="total" class="stat-box">Valor total dos livros: 0</p>
+                </div>
+            </div>
+        </section>
         
     </main>
 
+    <!--Footer da página-->
     <footer>
-
+        <div id="title-footer">
+            <img id="logo-footer" src="data/logo.png" alt="">
+            <h1>Bookshelf</h1>
+        </div>
+        <h3>&copy; 2026 Bookshelf | IFRN Caicó • Disciplina de Design Web</h3>
+        <h4>20241101110005 • 20241101110065 • 20241101110010 • 20241101110021   </h4>
     </footer>
 
     <script src="app.js"></script>
