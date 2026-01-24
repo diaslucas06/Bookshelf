@@ -8,6 +8,8 @@ const mensagem = document.getElementById('mensagem');
 const quantidadeLivros = document.getElementById('qtd');
 const mediaLivros = document.getElementById('media');
 const totalLivros = document.getElementById('total')
+const filtroGenero = document.getElementById('filtro-genero');
+filtroGenero.addEventListener('change', atualizar_lista);
 
 /* Tema escuro */
 
@@ -32,8 +34,16 @@ function atualizar_lista() {
         let li = document.createElement('li');
         let livro = LivrosCadastrados[i];
 
+        /* --- MUDANÇA AQUI: O FILTRO --- */
+        // Se o filtro não for "todos" e o gênero for diferente, pula este livro
+        if (filtroGenero.value !== 'todos' && livro.genero !== filtroGenero.value) {
+            continue; 
+        }
+        /* ------------------------------ */
+
         li.innerHTML = `<div><h2>${livro.titulo}</h2><h2>R$${livro.valorUnitario}</h2></div>\n<p>${livro.descricao}</p>\n<div><div id="carac"><h4>Gênero: ${livro.genero}</h4><h4>Quantidade: ${livro.quantidade}</div></h4><div class="excluir" id="excluir${i}"></div></div>`;
         Listaul.appendChild(li);
+        
         const excluir = document.getElementById(`excluir${i}`);
         excluir.addEventListener('click', (event) => {
             event.preventDefault();
@@ -50,7 +60,9 @@ function atualizar_lista() {
             mediaLivros.innerHTML = `Média do valor unitário: R$${MediaTotal.toFixed(2)}`
             totalLivros.innerText = `Valor total dos livros: R$${TotalGeral.toFixed(2)}`
 
-            atualizar_lista();
+            atualizar_opcoes_filtro(); // Atualiza o filtro
+            atualizar_lista();         // Atualiza a lista
+            salvarDados();             // ESSENCIAL: Salva para o livro não voltar depois
 
         });
     }
@@ -154,6 +166,7 @@ BotaoAdicionar.addEventListener('click', (event) => {
     }
     LivrosCadastrados.push(livro);
     atualizar_lista();
+    atualizar_opcoes_filtro();
 
 });
 
@@ -185,4 +198,23 @@ if (livrosSalvos) {
     LivrosCadastrados = JSON.parse(livrosSalvos);
     /*Desenha os livros carregados*/
     atualizar_lista(); 
+}
+
+function atualizar_opcoes_filtro() {
+    const generosUnicos = [...new Set(LivrosCadastrados.map(livro => livro.genero))];
+    const valorAtual = filtroGenero.value;
+    
+    // Texto do botão igual ao da imagem
+    filtroGenero.innerHTML = '<option value="todos">Filtrar por Gênero</option>';
+    
+    generosUnicos.forEach(genero => {
+        const option = document.createElement('option');
+        option.value = genero;
+        option.innerText = genero;
+        filtroGenero.appendChild(option);
+    });
+
+    if (generosUnicos.includes(valorAtual)) {
+        filtroGenero.value = valorAtual;
+    }
 }

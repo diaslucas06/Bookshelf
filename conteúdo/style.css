@@ -506,3 +506,32 @@ button {
         min-width: 0;
     }
 }
+
+/* Coloca o título na esquerda e o botão na direita */
+#cabecalho-lista {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px; /* Espaço antes da lista começar */
+}
+
+#filtro-genero {
+    background-color: #ce91e5; /* Cor lilás do seu tema */
+    color: white;
+    font-family: 'Mystery Quest', system-ui; /* A mesma fonte do título */
+    font-size: 24px;
+    border: none;
+    border-radius: 50px; /* Deixa bem redondinho */
+    padding: 10px 30px;
+    cursor: pointer;
+    outline: none; /* Tira a borda azul ao clicar */
+    text-align: center;
+}
+
+@media (max-width: 800px) {
+    #cabecalho-lista {
+        flex-direction: column;
+        gap: 15px;
+    }
+}

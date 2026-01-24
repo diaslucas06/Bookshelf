@@ -91,17 +91,24 @@
         </section>
 
     <section id="secao4">
-        <div id="livrosCadastrados">
-            <h2><img src="data/book-icon.png" alt="" id="bookicon">Livros Cadastrados</h2>
-            <ul id="lista">
-                <!--Itens adicionados via JavaScript-->
-            </ul>
-            <div class="stats">
-                <p id="qtd" class="stat-box">Total de livros cadastrados: 0</p>
-                <p id="media" class="stat-box center">Média de valor unitário: 0</p>
-                <p id="total" class="stat-box">Valor total dos livros: 0</p>
-            </div>
-        </div>
+       <div id="livrosCadastrados">
+    <div id="cabecalho-lista">
+        <h2><img src="data/book-icon.png" alt="" id="bookicon">Livros Cadastrados</h2>
+        
+        <select id="filtro-genero">
+            <option value="todos">Filtrar por Gênero</option>
+        </select>
+    </div>
+
+    <ul id="lista">
+        </ul>
+    
+    <div class="stats">
+        <p id="qtd" class="stat-box">Total de livros cadastrados: 0</p>
+        <p id="media" class="stat-box center">Média de valor unitário: 0</p>
+        <p id="total" class="stat-box">Valor total dos livros: 0</p>
+    </div>
+</div>
     </section>
         
     </main>
