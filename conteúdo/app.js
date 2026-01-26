@@ -52,6 +52,8 @@ function atualizar_lista() {
             let MediaTotal = TotalGeral / QuantidadeTotal;
             if (QuantidadeTotal === 0) {
                 MediaTotal = 0;
+            } else if (TotalGeral < 0) {
+                TotalGeral = 0;
             }
 
             quantidadeLivros.innerText = `Total de livros cadastrados: ${QuantidadeTotal}`
@@ -120,6 +122,11 @@ BotaoAdicionar.addEventListener('click', (event) => {
     }
 
     else if (isNaN(Number(quantidade))) {
+        mensagem.innerText = "Insira uma quantidade válida!";
+        return
+    } 
+    
+    else if (quantidade <= 0) {
         mensagem.innerText = "Insira uma quantidade válida!";
         return
     }

@@ -17,6 +17,7 @@
     /* CORES DE TEXTO */
     --texto-escuro: #22003C;
     --texto-claro: #FFFFFF;
+    --texto-aviso: #FFFFFF;
 
     /* FORMULÁRIO */
     --background-color-form: #CE91E5;
@@ -349,7 +350,7 @@ button {
 }
 
 #mensagem {
-    color: var(--texto-claro);
+    color: var(--texto-aviso);
 }
 
 /* LISTA DE LIVROS CADASTRADOS */
