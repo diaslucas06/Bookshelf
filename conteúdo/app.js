@@ -15,7 +15,6 @@ filtroGenero.addEventListener('change', atualizar_lista);
 
 const dark = document.getElementById("texto-darkmode");
 const body = document.getElementsByTagName("body")[0];
-
 const savedTheme = localStorage.getItem("tema");
 
 /*Globais*/
@@ -24,8 +23,9 @@ let LivrosCadastrados = [];
 let TotalGeral = 0;
 let QuantidadeTotal = 0;
 
+/* FUNÇÕES */
 
-/*Lista para atualizar a lista de livros cadastrados*/
+/*Função para atualizar a lista de livros cadastrados*/
 
 function atualizar_lista() {
     Listaul.innerHTML = ''; 
@@ -34,10 +34,10 @@ function atualizar_lista() {
         let li = document.createElement('li');
         let livro = LivrosCadastrados[i];
 
-    // Se o filtro não for "todos" e o gênero for diferente, pula este livro
-    if (filtroGenero.value !== 'todos' && livro.genero !== filtroGenero.value) {
+        // Se o filtro não for "todos" e o gênero for diferente, pula este livro
+        if (filtroGenero.value !== 'todos' && livro.genero !== filtroGenero.value) {
             continue; 
-    }
+        }
        
         li.innerHTML = `<div id="titulo"><h2 id="titulo-livro">${livro.titulo}</h2><h2>R$${livro.valorUnitario}</h2></div>\n<p>${livro.descricao}</p>\n<div><div id="carac"><h4>Gênero: ${livro.genero}</h4><h4>Quantidade: ${livro.quantidade}</div></h4><div class="excluir" id="excluir${i}"></div></div>`;
         Listaul.appendChild(li);
@@ -54,6 +54,8 @@ function atualizar_lista() {
                 MediaTotal = 0;
             } else if (TotalGeral < 0) {
                 TotalGeral = 0;
+            } else if (QuantidadeTotal < 0) {
+                QuantidadeTotal = 0;
             }
 
             quantidadeLivros.innerText = `Total de livros cadastrados: ${QuantidadeTotal}`
@@ -76,15 +78,69 @@ function atualizar_lista() {
 
 }
 
-/* Salvar dados com JSON e localStorage, serve para, ao recarregar a página, seus livros não desaparecerem */
+/* Realiza o calculo do total do livro para ser chamado no TotalGeral */
+
+function calcularTotal(qtd, valorU) {
+    return qtd * valorU
+}
+
+/* Salvar dados com JSON e localStorage, serve para que, ao recarregar a página, seus livros não desaparecerem */
 
 function salvarDados() {
     localStorage.setItem('meus_livros', JSON.stringify(LivrosCadastrados));
 }
 
+/* Função para filtro por gênero */
+
+function atualizar_opcoes_filtro() {
+    const generosUnicos = [...new Set(LivrosCadastrados.map(livro => livro.genero))];
+    const valorAtual = filtroGenero.value;
+    
+    // Texto do botão igual ao da imagem
+    filtroGenero.innerHTML = '<option value="todos">Filtrar por Gênero</option>';
+    
+    generosUnicos.forEach(genero => {
+        const option = document.createElement('option');
+        option.value = genero;
+        option.innerText = genero;
+        filtroGenero.appendChild(option);
+    });
+
+    if (generosUnicos.includes(valorAtual)) {
+        filtroGenero.value = valorAtual;
+    }
+}
+
+/* Função para recalcular as métricas após a página ser reaberta */
+
+function recalcularMetricas() {
+    
+    TotalGeral = 0
+    QuantidadeTotal = 0
+
+    LivrosCadastrados.forEach(livro => {
+        TotalGeral += calcularTotal(livro.quantidade,livro.valorUnitario)
+        QuantidadeTotal += livro.quantidade
+    });
+
+    let MediaTotal;
+
+    if (QuantidadeTotal > 0) {
+        MediaTotal = TotalGeral / QuantidadeTotal;
+    } else {
+        MediaTotal = 0;
+    }
+
+    quantidadeLivros.innerText = `Total de livros cadastrados: ${QuantidadeTotal}`
+    mediaLivros.innerHTML = `Média do valor unitário: R$${MediaTotal.toFixed(2)}`
+    totalLivros.innerText = `Valor total dos livros: R$${TotalGeral.toFixed(2)}`
+
+}
+
+/* Botão de adicionar livro */
+
 BotaoAdicionar.addEventListener('click', (event) => {
     event.preventDefault();
-
 
     /*Valores do Form*/
 
@@ -148,17 +204,15 @@ BotaoAdicionar.addEventListener('click', (event) => {
 
     /*Cálculos*/
 
-    TotalGeral += quantidade * valorUnitario;
+    TotalGeral += calcularTotal(quantidade, valorUnitario);
     QuantidadeTotal += quantidade;
     let MediaTotal = TotalGeral / QuantidadeTotal;
-
 
     /*Mensagens*/
 
     quantidadeLivros.innerText = `Total de livros cadastrados: ${QuantidadeTotal}`
     mediaLivros.innerHTML = `Média do valor unitário: R$${MediaTotal.toFixed(2)}`
     totalLivros.innerText = `Valor total dos livros: R$${TotalGeral.toFixed(2)}`
-
 
     /*Criando objeto "livro" e adicionando na lista LivrosCadastrados*/
 
@@ -169,6 +223,7 @@ BotaoAdicionar.addEventListener('click', (event) => {
         quantidade: quantidade,
         valorUnitario: valorUnitario
     }
+
     LivrosCadastrados.push(livro);
     atualizar_lista();
     atualizar_opcoes_filtro();
@@ -177,9 +232,13 @@ BotaoAdicionar.addEventListener('click', (event) => {
 
 /* Aplicação da mudança de tema */
 
+/* Se o tema salvo for o escuro, ao atualizar, volta com o tema escuro */
+
 if (savedTheme === "dark") {
     body.setAttribute("theme", "dark");
 }
+
+/* Botão de mudar o tema */
 
 dark.addEventListener("click", function(event) {
     event.preventDefault();
@@ -201,25 +260,10 @@ const livrosSalvos = localStorage.getItem('meus_livros');
 
 if (livrosSalvos) {
     LivrosCadastrados = JSON.parse(livrosSalvos);
+    /*Os filtros são pegos novamente para poderem ser filtrados*/
+    atualizar_opcoes_filtro()
+    /*Recalcula as métricas para não serem zeradas*/
+    recalcularMetricas()
     /*Desenha os livros carregados*/
     atualizar_lista(); 
-}
-
-function atualizar_opcoes_filtro() {
-    const generosUnicos = [...new Set(LivrosCadastrados.map(livro => livro.genero))];
-    const valorAtual = filtroGenero.value;
-    
-    // Texto do botão igual ao da imagem
-    filtroGenero.innerHTML = '<option value="todos">Filtrar por Gênero</option>';
-    
-    generosUnicos.forEach(genero => {
-        const option = document.createElement('option');
-        option.value = genero;
-        option.innerText = genero;
-        filtroGenero.appendChild(option);
-    });
-
-    if (generosUnicos.includes(valorAtual)) {
-        filtroGenero.value = valorAtual;
-    }
 }
