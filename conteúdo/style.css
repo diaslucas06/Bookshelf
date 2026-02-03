@@ -485,7 +485,7 @@ li #carac {
     border-radius: 10px;
     box-shadow: 0 2px 0 rgba(0,0,0,0.04);
     font-family: 'Mystery Quest', system-ui, sans-serif;
-    font-size: 16px;
+    font-size: 30px;
     min-width: 220px; /* largura mínima para ficar parecidas com a imagem */
     text-align: center;
     line-height: 1.2;
@@ -597,6 +597,9 @@ footer {
     }
     li #titulo #titulo-livro {
         max-width: 1050px;
+    }
+    .stat-box {
+        font-size: 28px;
     }
 }
 
@@ -712,6 +715,9 @@ footer {
     }
     li #titulo #titulo-livro {
         max-width: 470px;
+    }
+    .stat-box {
+        font-size: 20px;
     }
 }
 
@@ -870,6 +876,9 @@ footer {
     li #titulo #titulo-livro {
         max-width: 160px;
     }
+    .stat-box {
+        font-size: 18px;
+    }
 }
 
 @media (max-width: 320px) {
@@ -887,6 +896,15 @@ footer {
     }
     li #titulo #titulo-livro {
         max-width: 140px;
+    }
+    .stat-box {
+        font-size: 16px;
+    }
+    #title-footer {
+        gap: 20px;
+    }
+    #title-footer h1{
+        font-size: 40px;
     }
 }
 
