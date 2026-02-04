@@ -228,6 +228,10 @@ BotaoAdicionar.addEventListener('click', (event) => {
     atualizar_lista();
     atualizar_opcoes_filtro();
 
+    /* Reseta o form para não manter os dados do último livro adicionado */
+    FormPreencher.reset()
+    mensagem.innerText = "Livro adicionado com sucesso!" /* Mensagem de sucesso */
+
 });
 
 /* Aplicação da mudança de tema */
